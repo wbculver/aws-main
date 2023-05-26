@@ -1,7 +1,0 @@
-$content = "mainvpc = "
-$content += ./terraform output main-vpc-output
-Add-Content out.yml $content
-
-
- aws s3 cp out.yml s3://wbc2023tfstate/out.yml
- 
