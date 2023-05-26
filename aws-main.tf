@@ -6,7 +6,11 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "a2023-tf-bc-my-terraform-state-buckett" {
-  bucket = "a2023-tf-bc-my-terraform-state-buckett"  
+  bucket = "a2023-tf-bc-my-terraform-state-buckett"
+
+  versioning {
+    enabled = true
+  }
 }
 
 resource "aws_dynamodb_table" "my_terraform_state_lock_table" {
