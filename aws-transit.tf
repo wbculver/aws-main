@@ -20,8 +20,16 @@ resource "aws_ec2_transit_gateway" "test-tgw" {
     environment = "prd"
   }
 }
+resource "aws_vpc" "aws_transit_vpc" {
+  cidr_block = "10.192.0.0/16"
+   tags = {
+    Name = "aws_transit_vpc"
+  }
+}
 
-
+output "aws_transit_vpc_out" {
+  value = aws_vpc.aws_transit_vpc.id
+}
 ## Attachement of VPC1 from AWS production Account
 
 #resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1-attachment" {
