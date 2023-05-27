@@ -55,3 +55,13 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "vpc1-attachment" {
 output "aws_transitgw_out" {
   value = aws_ec2_transit_gateway.tgw.id
 }
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "vpc2-attachment" {
+ 
+  subnet_ids         = [aws_subnet.main-subnet.id]
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  vpc_id             = aws_vpc.main.id
+  tags = {
+    "Name" = "transit-gateway-attachment-main"
+  }
+}
